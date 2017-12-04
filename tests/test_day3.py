@@ -90,13 +90,13 @@ class TestSpiralGrid(unittest.TestCase):
         sg = SpiralGrid(20)
         sg.build()
         expected = {
-            (0, 0): 1,
-            (1, 0): 1,
-            (1, 1): 2,
-            (0, 1): 4,
-            (-1, 1): 5,
-            (-1, 0): 10,
-            (-1, -1): 11,
-            (0, -1): 23
+            Point(0, 0): 1,
+            Point(1, 0): 1,
+            Point(1, 1): 2,
+            Point(0, 1): 4,
+            Point(-1, 1): 5,
+            Point(-1, 0): 10,
+            Point(-1, -1): 11,
+            Point(0, -1): 23
         }
         self.assertEqual(expected, sg.grid)
