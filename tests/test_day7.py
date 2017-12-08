@@ -39,20 +39,22 @@ class TestDay7(unittest.TestCase):
             "cntj (57)",
         ]
 
-        self.programs = [Program(*parse_line(l)) for l in lines]
         self.program_data = build_program_data(lines)
 
     def test_find_bottom_returns_program_that_is_not_a_child(self):
-        self.assertEqual('tknk', find_bottom_program(self.programs))
+        self.assertEqual('tknk', find_bottom_program(self.program_data))
 
     def test_get_complete_weight_recurses(self):
-        expected_weight = sum(p.weight for p in self.programs)
+        expected_weight = sum(p['weight'] for p in self.program_data.values())
         weight = get_complete_weight('tknk', self.program_data)
         self.assertEqual(expected_weight, weight)
 
     def test_find_unbalanced(self):
         unbalanced = find_unbalanced('tknk', self.program_data)
-        self.assertEqual({'ugml': 251, 'padx': 243, 'fwft': 243}, unbalanced)
+        self.assertEqual(
+            ({'ugml': 251, 'padx': 243, 'fwft': 243}, {'ugml': 68, 'padx': 45, 'fwft': 72}),
+            unbalanced
+        )
 
     def test_find_unbalanced_recurse(self):
 
@@ -65,4 +67,7 @@ class TestDay7(unittest.TestCase):
             'bb': {'weight': 3, 'children': []},
         }
         unbalanced = find_unbalanced('a', program_data)
-        self.assertEqual({'b': 2, 'bb': 3}, unbalanced)
+        self.assertEqual(
+            ({'b': 2, 'bb': 3}, {'b': 2, 'bb': 3}),
+            unbalanced
+        )
