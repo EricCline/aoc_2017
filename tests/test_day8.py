@@ -42,5 +42,3 @@ class TestRegisters(unittest.TestCase):
             {'a': 1, 'b': 0, 'c': -10},
             self.registers._registers
         )
-
-
