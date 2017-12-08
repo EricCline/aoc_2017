@@ -53,10 +53,6 @@ class Registers:
         if self.current_max_register > self.max_register:
             self.max_register = self.current_max_register
 
-    def apply_instructions(self):
-        for instruction in self._instructions:
-            self._apply_instruction(instruction)
-
     def _apply_instruction(self, instruction):
         value1 = self._registers[instruction.check_register]
         value2 = instruction.check_value
