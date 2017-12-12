@@ -7,7 +7,7 @@ class TestHash(unittest.TestCase):
 
     def setUp(self):
         numbers = [0, 1, 2, 3, 4]
-        self.lengths = [3, 4, 1, 5]
+        self.lengths = "3, 4, 1, 5"
         self.h = Hash(self.lengths, numbers)
 
     def test_hash(self):
